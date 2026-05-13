@@ -14,11 +14,10 @@ export class PracticePage {
 
         /** 
          * PLANTILLA INDUSTRIAL:
-         * El selector busca por ROL (estabilidad) y por NOMBRE DINÁMICO (multilenguaje).
+         * LOCALIZADORES BASADOS EN ROL (CLEAN CODE) y por NOMBRE DINÁMICO (multilenguaje).
          */
 
-        // Botón que ya existe al cargar la página
-        //this.addButton = page.locator('#add_btn'); // Búsqueda por Selectores Técnicos (CSS/XPath)
+        // Buscamos un botón que tenga el nombre que viene de nuestro JSON de idioma
         this.addButton = page.getByRole('button', {
             name: translations.practicePage.buttons.add
         }); //Búsqueda por Locators Orientados al Usuario
@@ -29,11 +28,10 @@ export class PracticePage {
         const row2Container = page.locator('#row2');
 
         // Ahora definimos los elementos INTERNOS de esa fila
-        // Esto es mucho más robusto que buscar en toda la página
-        //this.row2Input = row2Container.locator('input');
+        // Buscamos un campo de texto (textbox) dentro del contenedor específico para evitar ambigüedad
         this.row2Input = row2Container.getByRole('textbox');
 
-        //this.row2SaveButton = row2Container.locator('button[name="Save"]');
+        // Buscamos el botón de guardar por su rol y nombre
         this.row2SaveButton = row2Container.getByRole('button', {
             name: translations.practicePage.buttons.save
         });
@@ -76,7 +74,4 @@ export class PracticePage {
     getExpectedSaveMessage(): string {
         return this.translations.practicePage.messages.rowSaved;
     }
-
-
-
 }
