@@ -23,6 +23,8 @@ jobs:
       env:
         # Inyectamos el secreto de GitHub como una variable de entorno de sistema
         BASE_URL: ${{ secrets.BASE_URL }}
+        USER_NAME: ${{ secrets.USER_NAME }} # Mapeo del secreto de usuario
+        PASSWORD: ${{ secrets.PASSWORD }}   # Mapeo del secreto de password
         ENV: 'qa'
         LOCALE: 'en'
     - uses: actions/upload-artifact@v4

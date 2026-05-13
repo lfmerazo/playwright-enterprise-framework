@@ -32,9 +32,18 @@ export class LoginPage {
     }
 
     //Función que agrupa la acción de escribir y hacer clic
-    async login(user: string, pass: string) {
-        await this.usernameInput.fill(user); // Escribe en el campo
-        await this.passwordInput.fill(pass); // Escribe en el campo
-        await this.loginButton.click();      // Presiona el botón
+    async login(user?: string, pass?: string) {
+        // Usamos el operador nullish (??) para priorizar el parámetro si existe, 
+        // de lo contrario, usa la variable de entorno segura.
+        const finalUser = user ?? process.env.USER_NAME;
+        const finalPass = pass ?? process.env.PASSWORD;
+
+        if (!finalUser || !finalPass) {
+            throw new Error("Credenciales no proporcionadas ni encontradas en el entorno.");
+        }
+
+        await this.usernameInput.fill(finalUser);
+        await this.passwordInput.fill(finalPass);
+        await this.loginButton.click();
     }
 }
