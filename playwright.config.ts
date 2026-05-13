@@ -26,7 +26,10 @@ export default defineConfig({
   /* Reintentar una vez si el test falla por un error aleatorio */
   retries: 1,
   /* Reporte detallado en HTML */
-  reporter: 'html',
+  reporter: [
+    ['html'],
+    ['list'], // Visibilidad rápida en la consola de GitHub
+  ],
 
   use: {
     /* Usamos la URL que definimos en el archivo .env.qa */
@@ -35,15 +38,16 @@ export default defineConfig({
 
     /* CAMBIO: Guardar rastro siempre que falle (sin esperar al reintento) */
     trace: 'retain-on-failure',
-
     /* Captura de pantalla si falla */
     screenshot: 'only-on-failure',
-
     /* Graba video si falla para ver el comportamiento dinámico */
     video: 'retain-on-failure',
 
     /* Acción Senior: Aseguramos que los IDs de test (data-testid) sean nuestra prioridad */
     testIdAttribute: 'data-testid',
+
+    // Localización dinámica para pruebas i18n
+    locale: process.env.LOCALE || 'es-ES',
   },
 
   /* Configuramos solo Chromium (Chrome) para empezar */
