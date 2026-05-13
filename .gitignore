@@ -1,8 +1,18 @@
-# Playwright
+# Dependencias
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
-/playwright/.auth/
-.env*
+dist/
+
+# Playwright específico
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Entornos y Secretos (CRÍTICO)
+.env
+.env.*
+! .env.example
+
+# Logs y Sistema
+npm-debug.log*
+.DS_Store

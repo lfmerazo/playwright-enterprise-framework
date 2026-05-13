@@ -1,11 +1,21 @@
 import { defineConfig, devices } from '@playwright/test';
-import * as dotenv from 'dotenv';
+import dotenv from 'dotenv';
 import path from 'path';
 
 /**
- * Leemos el archivo .env.qa que está en la carpeta data/env
+ * INGENIERÍA DE ENTORNOS:
+ * Leemos la variable ENV de la terminal. Si no existe, usamos 'qa' por defecto.
+ * Esto permite ejecutar: ENV=prod npx playwright test
  */
-dotenv.config({ path: path.resolve(__dirname, 'data/env', '.env.qa') });
+const ENV = process.env.ENV || 'qa';
+
+/**
+ * CARGA DINÁMICA:
+ * Localizamos el archivo basado en el ambiente actual.
+ */
+dotenv.config({
+  path: path.resolve(__dirname, 'data/env', `.env.${ENV}`)
+});
 
 export default defineConfig({
   testDir: './tests',
@@ -28,8 +38,11 @@ export default defineConfig({
     /* Captura de pantalla si falla */
     screenshot: 'only-on-failure',
 
-    /* Opcional: Graba video si falla */
+    /* Graba video si falla para ver el comportamiento dinámico */
     video: 'retain-on-failure',
+
+    /* Acción Senior: Aseguramos que los IDs de test (data-testid) sean nuestra prioridad */
+    testIdAttribute: 'data-testid',
   },
 
   /* Configuramos solo Chromium (Chrome) para empezar */

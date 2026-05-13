@@ -1,0 +1,12 @@
+{
+    "practicePage": {
+        "buttons": {
+            "add": "Agregar",
+            "save": "Ahorrar"
+        },
+        "messages": {
+            "rowAdded": "Se agregó la fila 2",
+            "rowSaved": "La fila 2 se salvó"
+        }
+    }
+}

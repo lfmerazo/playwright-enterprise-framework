@@ -1,0 +1,12 @@
+{
+    "practicePage": {
+        "buttons": {
+            "add": "Add",
+            "save": "Save"
+        },
+        "messages": {
+            "rowAdded": "Row 2 was added",
+            "rowSaved": "Row 2 was saved"
+        }
+    }
+}
