@@ -40,7 +40,7 @@ export class PracticePage {
     }
 
     async navigate() {
-        await this.page.goto('https://practicetestautomation.com/practice-test-exceptions/');
+        await this.page.goto('/practice-test-exceptions/');
     }
 
     /**
