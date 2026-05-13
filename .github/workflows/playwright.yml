@@ -13,11 +13,11 @@ jobs:
     - name: 📥 Checkout Repository
       uses: actions/checkout@v4
 
-    - name: 🟢 Setup Node.js
+    - name: 🟢 Setup Node.js (Enterprise Standard)
       uses: actions/setup-node@v4
       with:
-        # Usamos la versión 22 para alinearnos con tu Mac mini M4 y evitar advertencias
-        node-version: 22 
+        # Migramos a 24
+        node-version: 24
         # Activamos el caché para que el pipeline vuele en ejecuciones futuras
         cache: 'npm'
 
