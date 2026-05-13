@@ -30,7 +30,8 @@ export default defineConfig({
 
   use: {
     /* Usamos la URL que definimos en el archivo .env.qa */
-    baseURL: process.env.BASE_URL,
+    // Si la variable de entorno no existe, usa la URL de QA por defecto
+    baseURL: process.env.BASE_URL || 'https://practicetestautomation.com/',
 
     /* CAMBIO: Guardar rastro siempre que falle (sin esperar al reintento) */
     trace: 'retain-on-failure',
