@@ -28,7 +28,7 @@ export class LoginPage {
     //Función para navegar a la URL base definida en el archivo .env.qa
     // "async" significa que la acción toma tiempo (como el internet)
     async navigate() {
-        await this.page.goto(''); // "await" significa: "espera a que cargue"
+        await this.page.goto('/practice-test-login/'); // "await" significa: "espera a que cargue"
     }
 
     //Función que agrupa la acción de escribir y hacer clic
